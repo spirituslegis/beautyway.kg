@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Откройте в другом браузере</title>
+    <title>Переадресация по браузеру</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,21 +54,52 @@
 </head>
 <body>
     <div class="container">
-        <h1>Откройте в другом браузере</h1>
-        <p>Для корректного открытия WhatsApp, пожалуйста, используйте другой браузер, например, Chrome.</p>
-        <button class="button" onclick="openInChrome()">Открыть в Chrome</button>
+        <h1>Идёт перенаправление...</h1>
+        <p>Если вас не перенаправили, нажмите кнопку для открытия в нужном браузере.</p>
+        <button class="button" onclick="manualRedirect()">Открыть в нужном браузере</button>
     </div>
 
     <script type="text/javascript">
-        function openInChrome() {
-            const chromeLink = "googlechrome://wa.me/996501668998";
-            window.location.href = chromeLink;
+        // Функция для проверки браузера
+        function detectBrowser() {
+            const userAgent = navigator.userAgent.toLowerCase();
 
-            // Запасной вариант, если Chrome не установлен
-            setTimeout(() => {
-                window.location.href = "https://wa.me/996501668998";
-            }, 2000);
+            if (userAgent.indexOf('safari') > -1 && userAgent.indexOf('chrome') == -1) {
+                // Если Safari
+                return 'safari';
+            } else if (userAgent.indexOf('chrome') > -1) {
+                // Если Chrome
+                return 'chrome';
+            } else if (userAgent.indexOf('firefox') > -1) {
+                // Если Firefox
+                return 'firefox';
+            } else {
+                return 'other';
+            }
         }
+
+        // Функция для автоматического перенаправления
+        function autoRedirect() {
+            const browser = detectBrowser();
+
+            if (browser === 'chrome') {
+                window.location.href = "googlechrome://wa.me/996501668998"; // Ссылка для Chrome
+            } else if (browser === 'safari') {
+                window.location.href = "https://wa.me/996501668998"; // Ссылка для Safari
+            } else if (browser === 'firefox') {
+                window.location.href = "https://wa.me/996501668998"; // Ссылка для Firefox
+            } else {
+                window.location.href = "https://wa.me/996501668998"; // Запасной вариант
+            }
+        }
+
+        // Вручную открыть в нужном браузере
+        function manualRedirect() {
+            autoRedirect();
+        }
+
+        // Автоматическое перенаправление при загрузке страницы
+        window.onload = autoRedirect;
     </script>
 </body>
 </html>
