@@ -1,24 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Переадресация</title>
-
-    <!-- Переадресация через 10 секунд на WhatsApp -->
-    <meta http-equiv="refresh" content="10;url=https://wa.me/996705444705">
-
+    <title>Открыть WhatsApp</title>
     <script type="text/javascript">
+        // Ссылка на открытие WhatsApp с указанным номером
+        const whatsappUrl = "whatsapp://send?phone=996501668998";
 
-        // Через 10 секунд перенаправляем в WhatsApp
-        setTimeout(function() {
-            window.location.href = "https://wa.me/996705444705";
-        }, 10000); // Задержка в 10 секунд (10000 миллисекунд)
+        // Функция для перенаправления на WhatsApp
+        function openWhatsApp() {
+            window.location.href = whatsappUrl;
+
+            // Пауза перед редиректом, чтобы избежать ошибок
+            setTimeout(() => {
+                window.location.href = "https://wa.me/996501668998"; // Альтернатива, если приложение не установлено
+            }, 2000);
+        }
     </script>
 </head>
-<body>
-    <p>Вы сейчас будете переадресованы в Telegram, а затем в WhatsApp через 10 секунд...</p>
-    <p>Если переадресация не сработала, <a href="https://wa.me/996705444705">нажмите здесь, чтобы перейти в WhatsApp</a>.</p>
+<body onload="openWhatsApp()">
+    <h1>Перенаправление в WhatsApp...</h1>
+    <p>Если приложение не открылось, вы можете <a href="https://wa.me/996501668998">нажать здесь, чтобы открыть WhatsApp</a>.</p>
 </body>
 </html>
