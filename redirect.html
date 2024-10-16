@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Переадресация</title>
+   
 
     <!-- Переадресация через 10 секунд на WhatsApp -->
     <meta http-equiv="refresh" content="2;url=https://wa.me/996705444705">
@@ -14,9 +14,9 @@
         window.location.href = "tg://resolve?domain=username";
 
         // Через 10 секунд перенаправляем в WhatsApp
-        function() {
+        setTimeout(function() {
             window.location.href = "https://wa.me/996705444705";
-        } ; 
+        }, 3000); 
     </script>
 </head>
 <body>
