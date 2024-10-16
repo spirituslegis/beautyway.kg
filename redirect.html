@@ -3,24 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Открыть WhatsApp</title>
+    <title>Откройте в другом браузере</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Откройте в другом браузере</h1>
+        <p>Для корректного открытия WhatsApp, пожалуйста, используйте другой браузер, например, Chrome.</p>
+        <button class="button" onclick="openInChrome()">Открыть в Chrome</button>
+    </div>
+
     <script type="text/javascript">
-        // Ссылка на открытие WhatsApp с указанным номером
-        const whatsappUrl = "whatsapp://send?phone=996501668998";
+        function openInChrome() {
+            const chromeLink = "googlechrome://wa.me/996501668998";
+            window.location.href = chromeLink;
 
-        // Функция для перенаправления на WhatsApp
-        function openWhatsApp() {
-            window.location.href = whatsappUrl;
-
-            // Пауза перед редиректом, чтобы избежать ошибок
+            // Запасной вариант, если Chrome не установлен
             setTimeout(() => {
-                window.location.href = "https://wa.me/996501668998"; // Альтернатива, если приложение не установлено
+                window.location.href = "https://wa.me/996501668998";
             }, 2000);
         }
     </script>
-</head>
-<body onload="openWhatsApp()">
-    <h1>Перенаправление в WhatsApp...</h1>
-    <p>Если приложение не открылось, вы можете <a href="https://wa.me/996501668998">нажать здесь, чтобы открыть WhatsApp</a>.</p>
 </body>
 </html>
